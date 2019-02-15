@@ -3,6 +3,7 @@ import 'package:city_tips/core/auth/auth.dart';
 import 'package:city_tips/core/menu/menu.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:city_tips/views/HistoryPage.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -77,7 +78,7 @@ class _HomePageState extends State<HomePage> {
                 bloc: menuBloc,
                 builder: (BuildContext context, MenuState state) {
                   if (state is HistoryPageShowed) {
-                    return LoadingIndicator();
+                    return HistoryPage();
                   }
                 },
               ),
