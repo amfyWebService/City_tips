@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "84197145720",
+    "firebase_url": "https://city-tips.firebaseio.com",
+    "project_id": "city-tips",
+    "storage_bucket": "city-tips.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:84197145720:android:58a39597d6428b9d",
+        "android_client_info": {
+          "package_name": "com.amfy.citytips"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "84197145720-npiue42kfu3b87mtbhfafi82dlhec21s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBH5XO7svi6n14TJ0HYFdRZh9vdQgptaV8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
