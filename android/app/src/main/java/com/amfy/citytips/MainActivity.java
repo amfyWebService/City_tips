@@ -1,4 +1,4 @@
-package com.example.citytips;
+package com.amfy.citytips;
 
 import android.os.Bundle;
 import io.flutter.app.FlutterActivity;
