@@ -1,6 +1,6 @@
-import 'package:city_tips/core/auth/AuthenticationBloc.dart';
+import 'package:city_tips/core/auth/auth.dart';
 import 'package:city_tips/core/repositories/UserRepository.dart';
-import 'package:city_tips/core/login/LoginBloc.dart';
+import 'package:city_tips/core/login/login.dart';
 import 'package:city_tips/views/LoginForm.dart';
 import 'package:flutter/material.dart';
 

@@ -3,8 +3,7 @@ import 'dart:async';
 import 'package:meta/meta.dart';
 import 'package:bloc/bloc.dart';
 
-import 'package:city_tips/core/auth/AuthenticationEvent.dart';
-import 'package:city_tips/core/auth/AuthenticationState.dart';
+import 'package:city_tips/core/auth/auth.dart';
 import 'package:city_tips/core/repositories/UserRepository.dart';
 
 class AuthenticationBloc

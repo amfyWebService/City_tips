@@ -1,7 +1,6 @@
 import 'package:city_tips/components/LoadingIndicator.dart';
-import 'package:city_tips/core/auth/AuthenticationBloc.dart';
-import 'package:city_tips/core/auth/AuthenticationEvent.dart';
-import 'package:city_tips/core/auth/AuthenticationState.dart';
+import 'package:city_tips/core/auth/auth.dart';
+import 'package:city_tips/core/menu/menu.dart';
 import 'package:city_tips/core/repositories/UserRepository.dart';
 import 'package:city_tips/views/HomePage.dart';
 import 'package:city_tips/views/LoginPage.dart';
@@ -34,18 +33,21 @@ class App extends StatefulWidget {
 
 class _AppState extends State<App> {
   AuthenticationBloc authenticationBloc;
+  MenuBloc menuBloc;
   UserRepository get userRepository => widget.userRepository;
 
   @override
   void initState() {
     authenticationBloc = AuthenticationBloc(userRepository: userRepository);
     authenticationBloc.dispatch(AppStarted());
+    menuBloc = MenuBloc();
     super.initState();
   }
 
   @override
   void dispose() {
     authenticationBloc.dispose();
+    menuBloc.dispose();
     super.dispose();
   }
 
