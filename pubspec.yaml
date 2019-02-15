@@ -21,6 +21,13 @@ dependencies:
   cupertino_icons: ^0.1.2
   firebase_core: ^0.2.5       # This dependency was added during initial configuration.
   # firebase_analytics: ^1.0.4  # add dependency for Google Analytics for Firebase
+
+  # Bloc pattern
+  bloc: ^0.9.0
+  flutter_bloc: ^0.6.0
+  meta: ^1.1.6
+  equatable: ^0.1.6
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
