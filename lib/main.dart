@@ -1,8 +1,17 @@
+//import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+
 
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
+  // MyApp(){
+  //  FirebaseApp.configure(name: 'city-tips', options: new FirebaseOptions(
+  //   googleAppID: 'com.amfy.citytips',
+  //   apiKey: 'AIzaSyBgL-lawYA-GkFYFSV3B9TElbiWSXoAOe4',
+  //   projectID: 'city-tips'
+  //   ));
+  // }
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
