@@ -1,10 +1,8 @@
 import 'dart:async';
 
-import 'package:city_tips/core/auth/AuthenticationBloc.dart';
-import 'package:city_tips/core/auth/AuthenticationEvent.dart';
+import 'package:city_tips/core/auth/auth.dart';
 import 'package:city_tips/core/repositories/UserRepository.dart';
-import 'package:city_tips/core/login/LoginEvent.dart';
-import 'package:city_tips/core/login/LoginState.dart';
+import 'package:city_tips/core/login/login.dart';
 import 'package:meta/meta.dart';
 import 'package:bloc/bloc.dart';
 
