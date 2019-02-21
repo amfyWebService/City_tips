@@ -22,9 +22,9 @@ class AuthenticationBloc
     AuthenticationEvent event,
   ) async* {
     if (event is AppStarted) {
-      final bool hasToken = await userRepository.hasToken();
+      final bool isSignIn = await userRepository.isSignIn();
 
-      if (hasToken) {
+      if (isSignIn) {
         yield AuthenticationAuthenticated();
       } else {
         yield AuthenticationUnauthenticated();
@@ -32,14 +32,13 @@ class AuthenticationBloc
     }
 
     if (event is LoggedIn) {
-      yield AuthenticationLoading();
-      await userRepository.persistToken(event.token);
+//      yield AuthenticationLoading();
       yield AuthenticationAuthenticated();
     }
 
     if (event is LoggedOut) {
       yield AuthenticationLoading();
-      await userRepository.deleteToken();
+      await userRepository.signOut();
       yield AuthenticationUnauthenticated();
     }
   }

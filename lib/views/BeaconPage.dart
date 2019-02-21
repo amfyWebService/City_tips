@@ -13,7 +13,6 @@ class BeaconPage extends StatefulWidget {
 class _BeaconPageState extends State<BeaconPage> {
   int _favoriteCount = 0;
   Beacon get beacon => widget.beacon;
-  String get title => beacon.title;
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +47,7 @@ class _BeaconPageState extends State<BeaconPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("$title"),
+        title: Text("${beacon.title}"),
       ),
       body: Container(
         child: Column(

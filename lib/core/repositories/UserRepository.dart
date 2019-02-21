@@ -1,29 +1,29 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:meta/meta.dart';
 
 class UserRepository {
-  Future<String> authenticate({
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+
+  Future<FirebaseUser> authenticate({
     @required String username,
     @required String password,
   }) async {
-    await Future.delayed(Duration(seconds: 1));
-    return 'token';
+
+    final FirebaseUser user = await _auth.signInWithEmailAndPassword(email: username, password: password);
+    return user;
   }
 
-  Future<void> deleteToken() async {
-    /// delete from keystore/keychain
-    await Future.delayed(Duration(seconds: 1));
+  Future<void> signOut() async {
+    await _auth.signOut();
     return;
   }
 
-  Future<void> persistToken(String token) async {
-    /// write to keystore/keychain
-    await Future.delayed(Duration(seconds: 1));
-    return;
+  Future<bool> isSignIn() async {
+    return await _auth.currentUser() != null;
   }
 
-  Future<bool> hasToken() async {
-    /// read from keystore/keychain
-    await Future.delayed(Duration(seconds: 1));
-    return false;
+  /// {inheritDoc}
+  Future<FirebaseUser> getUser() async {
+    return _auth.currentUser();
   }
 }

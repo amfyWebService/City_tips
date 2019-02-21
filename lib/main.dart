@@ -20,6 +20,7 @@ class SimpleBlocDelegate extends BlocDelegate {
 void main() async {
   BlocSupervisor().delegate = SimpleBlocDelegate();
   await PrefService.init(prefix: 'pref_');
+
   runApp(App(userRepository: UserRepository()));
 }
 
