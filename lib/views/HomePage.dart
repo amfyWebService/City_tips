@@ -1,6 +1,7 @@
 import 'package:city_tips/components/LoadingIndicator.dart';
 import 'package:city_tips/core/auth/auth.dart';
 import 'package:city_tips/core/menu/menu.dart';
+import 'package:city_tips/views/BeaconPage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:city_tips/views/HistoryPage.dart';
@@ -62,6 +63,13 @@ class _HomePageState extends State<HomePage> {
                   },
                 ),
                 ListTile(
+                  title: Text('Beacon'),
+                  onTap: () {
+                    menuBloc.dispatch(BeaconPageSelected());
+                    Navigator.pop(context);
+                  },
+                ),
+                ListTile(
                   title: Text('Logout'),
                   onTap: () {
                     authenticationBloc.dispatch(LoggedOut());
@@ -79,6 +87,10 @@ class _HomePageState extends State<HomePage> {
                 builder: (BuildContext context, MenuState state) {
                   if (state is HistoryPageShowed) {
                     return HistoryPage();
+                  }
+
+                  if(state is BeaconPageShowed) {
+                    return BeaconPage();
                   }
                 },
               ),
