@@ -61,7 +61,5 @@ class _BeaconPageState extends State<BeaconPage> {
     );
   }
 
-  void _increment(){
-    _favoriteCount++;
-  }
+ 
 }

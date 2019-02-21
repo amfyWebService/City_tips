@@ -30,6 +30,7 @@ class _LoginPageState extends State<LoginPage> {
       userRepository: _userRepository,
       authenticationBloc: _authenticationBloc,
     );
+    
     super.initState();
   }
 

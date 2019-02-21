@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 
 import 'package:bloc/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:preferences/preferences.dart';
 
 class SimpleBlocDelegate extends BlocDelegate {
   @override
@@ -16,8 +17,9 @@ class SimpleBlocDelegate extends BlocDelegate {
   }
 }
 
-void main() {
+void main() async {
   BlocSupervisor().delegate = SimpleBlocDelegate();
+  await PrefService.init(prefix: 'pref_');
   runApp(App(userRepository: UserRepository()));
 }
 
