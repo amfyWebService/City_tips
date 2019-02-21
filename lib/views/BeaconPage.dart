@@ -1,7 +1,13 @@
 import 'package:city_tips/core/model/BeaconModel.dart';
 import 'package:flutter/material.dart';
 
-class BeaconPage extends StatelessWidget {
+class BeaconPage extends StatefulWidget {
+  @override
+  _BeaconPageState createState() => _BeaconPageState();
+}
+
+class _BeaconPageState extends State<BeaconPage> {
+  int _favoriteCount = 0;
   BeaconModel beacon = new BeaconModel(
       id: '1',
       information: 'Un jour ici un homme ...',
@@ -13,6 +19,7 @@ class BeaconPage extends StatelessWidget {
   Widget build(BuildContext context) {
    // padding: const EdgeInsets.all(32);
     Widget description = Container(
+      padding: const EdgeInsets.all(10),
       child: Row(
         children: <Widget>[
           Expanded(
@@ -30,11 +37,11 @@ class BeaconPage extends StatelessWidget {
               ],
             ),
           ),
-          Icon(
-        Icons.favorite,
-        color: Colors.red[500],
+          IconButton(icon:(Icon(Icons.favorite)),
+        color: Colors.red[500], onPressed: () => setState((){_favoriteCount++;}),
       ),
-      Text('41'),
+      
+      Text('$_favoriteCount'),
         ],
       ),
     );
@@ -47,5 +54,9 @@ class BeaconPage extends StatelessWidget {
           ]
         )
       );
+  }
+
+  void _increment(){
+    _favoriteCount++;
   }
 }
