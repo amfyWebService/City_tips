@@ -1,8 +1,8 @@
-import 'package:city_tips/core/model/BeaconModel.dart';
+import 'package:city_tips/core/model/Beacon.dart';
 import 'package:flutter/material.dart';
 
 class BeaconPage extends StatelessWidget {
-  BeaconModel beacon = new BeaconModel(
+  Beacon beacon = new Beacon(
       id: '1',
       information: 'Un jour ici un homme ...',
       tag: 'Fact',
