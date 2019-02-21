@@ -5,7 +5,11 @@ abstract class MenuEvent extends Equatable {
 }
 
 class HistoryPageSelected extends MenuEvent {
-
   @override
   String toString() => 'MenuHistory';
+}
+
+class BeaconPageSelected extends MenuEvent {
+  @override
+  String toString() => 'MenuBeacon';
 }

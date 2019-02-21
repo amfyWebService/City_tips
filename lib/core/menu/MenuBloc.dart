@@ -10,12 +10,14 @@ class MenuBloc extends Bloc<MenuEvent, MenuState> {
   MenuState get initialState => HistoryPageShowed();
 
   @override
-  Stream<MenuState> mapEventToState(
-      MenuState currentState,
-      MenuEvent event,
-      ) async* {
+  Stream<MenuState> mapEventToState(MenuState currentState, MenuEvent event) async* {
+    
     if (event is HistoryPageSelected) {
       yield HistoryPageShowed();
+    }
+
+    if(event is BeaconPageSelected) {
+      yield BeaconPageShowed();
     }
   }
 }
