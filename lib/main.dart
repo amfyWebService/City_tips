@@ -1,6 +1,5 @@
 import 'package:city_tips/components/LoadingIndicator.dart';
 import 'package:city_tips/core/auth/auth.dart';
-import 'package:city_tips/core/menu/menu.dart';
 import 'package:city_tips/core/repositories/UserRepository.dart';
 import 'package:city_tips/views/HomePage.dart';
 import 'package:city_tips/views/LoginPage.dart';
