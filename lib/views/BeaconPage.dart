@@ -2,18 +2,18 @@ import 'package:city_tips/core/model/Beacon.dart';
 import 'package:flutter/material.dart';
 
 class BeaconPage extends StatefulWidget {
+  Beacon beacon;
+
+  BeaconPage({@required this.beacon});
+
   @override
   _BeaconPageState createState() => _BeaconPageState();
 }
 
 class _BeaconPageState extends State<BeaconPage> {
   int _favoriteCount = 0;
-  BeaconModel beacon = new BeaconModel(
-      id: '1',
-      information: 'Un jour ici un homme ...',
-      tag: 'Fact',
-      image:
-          'https://quoifaireabordeaux.com/wp-content/uploads/2018/12/ec8036126d1342c58e809b8397f80732.jpg');
+  Beacon get beacon => widget.beacon;
+  String get title => beacon.title;
 
   @override
   Widget build(BuildContext context) {
@@ -46,17 +46,20 @@ class _BeaconPageState extends State<BeaconPage> {
       ),
     );
 
-    return Container(
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("$title"),
+      ),
+      body: Container(
         child: Column(
           children: [
             Image.network(beacon.image), 
             description
           ]
         )
-      );
+      )
+    );
   }
 
-  void _increment(){
-    _favoriteCount++;
-  }
+ 
 }

@@ -1,6 +1,5 @@
 import 'package:city_tips/components/LoadingIndicator.dart';
 import 'package:city_tips/core/auth/auth.dart';
-import 'package:city_tips/core/menu/menu.dart';
 import 'package:city_tips/core/repositories/UserRepository.dart';
 import 'package:city_tips/views/HomePage.dart';
 import 'package:city_tips/views/LoginPage.dart';
@@ -9,6 +8,7 @@ import 'package:flutter/material.dart';
 
 import 'package:bloc/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:preferences/preferences.dart';
 
 class SimpleBlocDelegate extends BlocDelegate {
   @override
@@ -17,8 +17,9 @@ class SimpleBlocDelegate extends BlocDelegate {
   }
 }
 
-void main() {
+void main() async {
   BlocSupervisor().delegate = SimpleBlocDelegate();
+  await PrefService.init(prefix: 'pref_');
   runApp(App(userRepository: UserRepository()));
 }
 
