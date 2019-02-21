@@ -1,5 +1,6 @@
 import 'package:city_tips/core/auth/auth.dart';
 import 'package:city_tips/views/BeaconPage.dart';
+import 'package:city_tips/views/SettingsPage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:city_tips/views/HistoryPage.dart';
@@ -12,7 +13,8 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   List<MenuItem> menu = [
     MenuItem(title: "History", icon: Icons.history, page: HistoryPage()),
-    MenuItem(title: "Beacon", icon: Icons.trip_origin, page: BeaconPage())
+    MenuItem(title: "Beacon", icon: Icons.trip_origin, page: BeaconPage()),
+    MenuItem(title: "Settings", icon:Icons.settings_applications, page: SettingsPage())
   ];
 
   MenuItem _menuItemSelected;
