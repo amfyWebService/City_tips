@@ -33,21 +33,18 @@ class App extends StatefulWidget {
 
 class _AppState extends State<App> {
   AuthenticationBloc authenticationBloc;
-  MenuBloc menuBloc;
   UserRepository get userRepository => widget.userRepository;
 
   @override
   void initState() {
     authenticationBloc = AuthenticationBloc(userRepository: userRepository);
     authenticationBloc.dispatch(AppStarted());
-    menuBloc = MenuBloc();
     super.initState();
   }
 
   @override
   void dispose() {
     authenticationBloc.dispose();
-    menuBloc.dispose();
     super.dispose();
   }
 
