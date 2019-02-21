@@ -19,8 +19,10 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
-  firebase_core: ^0.2.5       # This dependency was added during initial configuration.
+  firebase_core: ^0.3.0       # This dependency was added during initial configuration.
   # firebase_analytics: ^1.0.4  # add dependency for Google Analytics for Firebase
+  firebase_auth: ^0.8.1+1
+  google_sign_in: ^4.0.1+1
 
   # Bloc pattern
   bloc: ^0.9.0

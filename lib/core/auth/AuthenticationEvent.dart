@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:meta/meta.dart';
 import 'package:equatable/equatable.dart';
 
@@ -11,12 +12,12 @@ class AppStarted extends AuthenticationEvent {
 }
 
 class LoggedIn extends AuthenticationEvent {
-  final String token;
+  final FirebaseUser user;
 
-  LoggedIn({@required this.token}) : super([token]);
+  LoggedIn({@required this.user}) : super([user]);
 
   @override
-  String toString() => 'LoggedIn { token: $token }';
+  String toString() => 'LoggedIn { user: ${user.displayName} }';
 }
 
 class LoggedOut extends AuthenticationEvent {
