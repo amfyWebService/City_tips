@@ -17,7 +17,7 @@ class LoggedIn extends AuthenticationEvent {
   LoggedIn({@required this.user}) : super([user]);
 
   @override
-  String toString() => 'LoggedIn { user: ${user.displayName} }';
+  String toString() => 'LoggedIn { user: ${user.email} }';
 }
 
 class LoggedOut extends AuthenticationEvent {

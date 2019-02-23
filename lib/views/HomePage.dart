@@ -43,7 +43,7 @@ class _HomePageState extends State<HomePage> {
       child: Column(
         children: <Widget>[
           Text('City tips'),
-          Text(user?.displayName)
+          Text(user?.email)
         ],
       ),
       decoration: BoxDecoration(
@@ -76,8 +76,6 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    List<Widget> menuDrawer = buildMenuDrawer();
-
     return Scaffold(
       appBar: AppBar(
         title: Text('${_menuItemSelected.title}'),
@@ -89,7 +87,7 @@ class _HomePageState extends State<HomePage> {
         child: ListView(
             // Important: Remove any padding from the ListView.
             padding: EdgeInsets.zero,
-            children: menuDrawer),
+            children: buildMenuDrawer()),
       ),
       body: Container(
         child: Center(child: _menuItemSelected.page),

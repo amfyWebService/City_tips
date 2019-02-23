@@ -24,6 +24,22 @@ class _LoginFormState extends State<LoginForm> {
 
   LoginBloc get _loginBloc => widget.loginBloc;
 
+  String authErrorToString(errorCode) {
+    if(errorCode == "ERROR_INVALID_EMAIL" ||
+        errorCode == "ERROR_INVALID_CREDENTIAL" ||
+        errorCode == "ERROR_WRONG_PASSWORD" ||
+        errorCode == "ERROR_EMAIL_ALREADY_IN_USE"
+    ){
+      return "Wrong email or password";
+    }
+
+    if(errorCode == "ERROR_WEAK_PASSWORD"){
+      return "Password too weak";
+    }
+
+    return "An error has occurred. Please try again";
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<LoginEvent, LoginState>(
@@ -36,7 +52,7 @@ class _LoginFormState extends State<LoginForm> {
           _onWidgetDidBuild(() {
             Scaffold.of(context).showSnackBar(
               SnackBar(
-                content: Text('${state.error}'),
+                content: Text(authErrorToString(state.error)),
                 backgroundColor: Colors.red,
               ),
             );
