@@ -1,6 +1,7 @@
 import 'package:city_tips/core/auth/auth.dart';
 import 'package:city_tips/views/BeaconPage.dart';
 import 'package:city_tips/views/SettingsPage.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:city_tips/views/HistoryPage.dart';
@@ -11,6 +12,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  AuthenticationBloc authenticationBloc;
+
   List<MenuItem> menu = [
     MenuItem(title: "History", icon: Icons.history, page: HistoryPage()),
     //MenuItem(title: "Beacon", icon: Icons.trip_origin, page: BeaconPage())
@@ -18,11 +21,13 @@ class _HomePageState extends State<HomePage> {
   ];
 
   MenuItem _menuItemSelected;
-  String get _title => _menuItemSelected.title;
+  FirebaseUser user;
 
   @override
   void initState() {
+    authenticationBloc = BlocProvider.of<AuthenticationBloc>(context);
     _menuItemSelected = menu[0];
+    authenticationBloc.userRepository.getUser().then((firebaseUser) => setState(() => user = firebaseUser));
     super.initState();
   }
 
@@ -31,11 +36,16 @@ class _HomePageState extends State<HomePage> {
     super.dispose();
   }
 
-  List<Widget> buildMenuDrawer(AuthenticationBloc authenticationBloc) {
+  List<Widget> buildMenuDrawer() {
     List<Widget> menuDrawer = [];
 
     menuDrawer.add(DrawerHeader(
-      child: Text('City tips'),
+      child: Column(
+        children: <Widget>[
+          Text('City tips'),
+          Text(user?.email)
+        ],
+      ),
       decoration: BoxDecoration(
         color: Colors.blue,
       ),
@@ -66,13 +76,9 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    AuthenticationBloc authenticationBloc = BlocProvider.of<AuthenticationBloc>(context);
-
-    List<Widget> menuDrawer = buildMenuDrawer(authenticationBloc);
-
     return Scaffold(
       appBar: AppBar(
-        title: Text('$_title'),
+        title: Text('${_menuItemSelected.title}'),
       ),
       drawer: Drawer(
         // Add a ListView to the drawer. This ensures the user can scroll
@@ -81,7 +87,7 @@ class _HomePageState extends State<HomePage> {
         child: ListView(
             // Important: Remove any padding from the ListView.
             padding: EdgeInsets.zero,
-            children: menuDrawer),
+            children: buildMenuDrawer()),
       ),
       body: Container(
         child: Center(child: _menuItemSelected.page),
