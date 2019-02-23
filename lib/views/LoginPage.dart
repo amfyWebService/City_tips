@@ -30,7 +30,7 @@ class _LoginPageState extends State<LoginPage> {
       userRepository: _userRepository,
       authenticationBloc: _authenticationBloc,
     );
-    
+
     super.initState();
   }
 
@@ -40,10 +40,12 @@ class _LoginPageState extends State<LoginPage> {
       appBar: AppBar(
         title: Text('Login'),
       ),
-      body: LoginForm(
-        authenticationBloc: _authenticationBloc,
-        loginBloc: _loginBloc,
-      ),
+      body: Padding(
+          padding: EdgeInsets.all(16),
+          child: LoginForm(
+            authenticationBloc: _authenticationBloc,
+            loginBloc: _loginBloc,
+          )),
     );
   }
 

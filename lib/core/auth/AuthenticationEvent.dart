@@ -1,4 +1,4 @@
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:city_tips/core/model/User.dart';
 import 'package:meta/meta.dart';
 import 'package:equatable/equatable.dart';
 
@@ -12,12 +12,12 @@ class AppStarted extends AuthenticationEvent {
 }
 
 class LoggedIn extends AuthenticationEvent {
-  final FirebaseUser user;
+  final User user;
 
   LoggedIn({@required this.user}) : super([user]);
 
   @override
-  String toString() => 'LoggedIn { user: ${user.displayName} }';
+  String toString() => 'LoggedIn { user: ${user.email} }';
 }
 
 class LoggedOut extends AuthenticationEvent {
