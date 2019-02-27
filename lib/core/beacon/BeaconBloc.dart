@@ -1,17 +1,18 @@
 import 'package:bloc/bloc.dart';
 import 'package:city_tips/core/beacon/BeaconEvent.dart';
 import 'package:city_tips/core/beacon/BeaconState.dart';
-import 'package:city_tips/core/repositories/BeaconRepository.dart';
+import 'package:city_tips/core/model/Beacon.dart';
+import 'package:city_tips/core/model/User.dart';
+import 'package:city_tips/core/repositories/UserRepository.dart';
 import 'package:meta/meta.dart';
 
 
 class BeaconBloc extends Bloc<BeaconEvent, BeaconState>{
-    final BeaconRepository beaconRepository;
+  final UserRepository userRepository;
 
-  BeaconBloc({@required this.beaconRepository}): assert(beaconRepository != null);
+  BeaconBloc({@required this.userRepository}): assert(userRepository != null);
 
   @override
-  // TODO: implement initialState
   BeaconState get initialState => BeaconUninitialized();
 
   @override
@@ -21,6 +22,13 @@ class BeaconBloc extends Bloc<BeaconEvent, BeaconState>{
     )async * {
       if(event is AppStarted){
         yield BeaconSuccess();
+        try{
+          final User user = await userRepository.getUser(); 
+          final List<Beacon> beacons = user.beacons; 
+
+        } catch(error){
+          print(error);
+        }
       }
    
   }

@@ -1,6 +1,6 @@
 import 'package:city_tips/core/auth/auth.dart';
+import 'package:city_tips/core/model/User.dart';
 import 'package:city_tips/views/SettingsPage.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:city_tips/views/HistoryPage.dart';
@@ -20,7 +20,7 @@ class _HomePageState extends State<HomePage> {
   ];
 
   MenuItem _menuItemSelected;
-  FirebaseUser user;
+  User user;
 
   @override
   void initState() {
