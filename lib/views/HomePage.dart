@@ -15,7 +15,6 @@ class _HomePageState extends State<HomePage> {
 
   List<MenuItem> menu = [
     MenuItem(title: "History", icon: Icons.history, page: HistoryPage()),
-    MenuItem(title: "Beacon", icon: Icons.trip_origin, page: BeaconPage()),
     MenuItem(title: "Settings", icon:Icons.settings_applications, page: SettingsPage())
   ];
 
