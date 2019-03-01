@@ -1,5 +1,6 @@
 import 'package:city_tips/core/auth/auth.dart';
 import 'package:city_tips/views/BeaconPage.dart';
+import 'package:city_tips/views/MapPage.dart';
 import 'package:city_tips/views/SettingsPage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -18,6 +19,7 @@ class _HomePageState extends State<HomePage> {
     MenuItem(title: "History", icon: Icons.history, page: HistoryPage()),
     //MenuItem(title: "Beacon", icon: Icons.trip_origin, page: BeaconPage())
     MenuItem(title: "Settings", icon:Icons.settings_applications, page: SettingsPage()),
+    MenuItem(title: "Map", icon:Icons.map, page: MapPage()),
   ];
 
   MenuItem _menuItemSelected;

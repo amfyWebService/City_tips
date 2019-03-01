@@ -4,6 +4,7 @@ import 'package:city_tips/core/model/User.dart';
 import 'package:city_tips/core/model/Beacon.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class HistoryPage extends StatelessWidget {
 
@@ -15,11 +16,13 @@ class HistoryPage extends StatelessWidget {
       title: "Fontaine des girondins",
       information: 'Un jour ici un homme ...',
       tag: 'Fact',
+      location: LatLng(44.845500, -0.575970),
       image:
           'https://quoifaireabordeaux.com/wp-content/uploads/2018/12/ec8036126d1342c58e809b8397f80732.jpg'),
           new Beacon(id: '2',
       title: "La patate",
       information: 'Une patate ...',
+      location: LatLng(0, 0),
       tag: 'Fact',
       image:
           'https://quoifaireabordeaux.com/wp-content/uploads/2018/12/ec8036126d1342c58e809b8397f80732.jpg')
