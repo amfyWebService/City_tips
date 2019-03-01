@@ -8,7 +8,7 @@ class BeaconDetectionService
    final regions = <Region>[];
    final listUUID = List<String>();
    LocalNotification notifier;
-   BeaconDetectionService(List<String> args)
+   BeaconDetectionService()
    {
      notifier = LocalNotification();
      launchService();
