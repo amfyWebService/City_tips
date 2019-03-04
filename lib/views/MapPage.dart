@@ -62,9 +62,9 @@ class MapSampleState extends State<MapSample> {
         onMapCreated: (GoogleMapController controller) {
           this.controller = controller;
           this.controller.updateMapOptions(GoogleMapOptions(mapType:MapType.satellite));
-          user.beacons.forEach((beacon) => {
+          user.beacons.forEach((beacon) => 
             this.addMarkerToMap(beacon)
-          });
+          );
           _controller.complete(controller);
         },
       ),
