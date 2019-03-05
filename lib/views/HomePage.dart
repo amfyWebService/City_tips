@@ -1,11 +1,10 @@
 import 'package:city_tips/core/auth/auth.dart';
-import 'package:city_tips/views/BeaconPage.dart';
+import 'package:city_tips/core/model/User.dart';
+import 'package:city_tips/views/HistoryPage.dart';
 import 'package:city_tips/views/MapPage.dart';
 import 'package:city_tips/views/SettingsPage.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:city_tips/views/HistoryPage.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -23,7 +22,7 @@ class _HomePageState extends State<HomePage> {
   ];
 
   MenuItem _menuItemSelected;
-  FirebaseUser user;
+  User user;
 
   @override
   void initState() {
@@ -45,7 +44,7 @@ class _HomePageState extends State<HomePage> {
       child: Column(
         children: <Widget>[
           Text('City tips'),
-          Text(user?.email)
+          Text(user?.username ?? '')
         ],
       ),
       decoration: BoxDecoration(
@@ -56,7 +55,7 @@ class _HomePageState extends State<HomePage> {
     for (int i = 0; i < menu.length; i++) {
       menuDrawer.add(ListTile(
         leading: Icon(menu[i].icon),
-        title: Text(menu[i].title),
+        title: Text(menu[i].title ?? ''),
         onTap: () {
           setState(() {
             _menuItemSelected = menu[i];
