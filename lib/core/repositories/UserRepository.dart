@@ -1,3 +1,4 @@
+import 'package:city_tips/core/model/User.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:meta/meta.dart';
 
@@ -19,8 +20,10 @@ class UserRepository {
   ///   • `ERROR_USER_DISABLED` - If the user has been disabled (for example, in the Firebase console)
   ///   • `ERROR_TOO_MANY_REQUESTS` - If there was too many attempts to sign in as this user.
   ///   • `ERROR_OPERATION_NOT_ALLOWED` - Indicates that Email & Password accounts are not enabled.
-  Future<FirebaseUser> authenticate({@required String username, @required String password}) {
-    return _auth.signInWithEmailAndPassword(email: username, password: password);
+  Future<User> authenticate({@required String username, @required String password}) async {
+    FirebaseUser firebaseUser = await _auth.signInWithEmailAndPassword(email: username, password: password);
+    User user = new User(id: firebaseUser.uid, username: firebaseUser.email, beacons: []);
+    return user;
   }
 
   /// Tries to create a new user account with the given email address and password.
@@ -32,8 +35,10 @@ class UserRepository {
   ///   • `ERROR_WEAK_PASSWORD` - If the password is not strong enough.
   ///   • `ERROR_INVALID_CREDENTIAL` - If the email address is malformed.
   ///   • `ERROR_EMAIL_ALREADY_IN_USE` - If the email is already in use by a different account.
-  Future<FirebaseUser> createUser({@required String username, @required String password}) {
-    return _auth.createUserWithEmailAndPassword(email: username, password: password);
+  Future<User> createUser({@required String username, @required String password}) async {
+    FirebaseUser firebaseUser = await _auth.createUserWithEmailAndPassword(email: username, password: password);
+    User user = new User(id: firebaseUser.uid, username: firebaseUser.email, beacons: []);
+    return user;
   }
 
   /// Signs out the current user and clears it from the disk cache.
@@ -50,7 +55,8 @@ class UserRepository {
   }
 
   /// Returns the currently signed-in [FirebaseUser] or [null] if there is none.
-  Future<FirebaseUser> getUser() async {
-    return _auth.currentUser();
+  Future<User> getUser() async {
+    FirebaseUser firebaseUser = await _auth.currentUser();
+    return new User(id: firebaseUser.uid, username: firebaseUser.email, beacons: []);
   }
 }

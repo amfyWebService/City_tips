@@ -1,11 +1,10 @@
 import 'dart:async';
 
-import 'package:city_tips/core/auth/auth.dart';
-import 'package:city_tips/core/repositories/UserRepository.dart';
-import 'package:city_tips/core/login/login.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:meta/meta.dart';
 import 'package:bloc/bloc.dart';
+import 'package:city_tips/core/auth/auth.dart';
+import 'package:city_tips/core/login/login.dart';
+import 'package:city_tips/core/repositories/UserRepository.dart';
+import 'package:meta/meta.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
   final UserRepository userRepository;

@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:city_tips/core/beacon/BeaconEvent.dart';
 import 'package:city_tips/core/beacon/BeaconState.dart';
-import 'package:city_tips/core/repositories/BeacoinRepository.dart';
+import 'package:city_tips/core/repositories/BeaconRepository.dart';
 import 'package:meta/meta.dart';
 
 
