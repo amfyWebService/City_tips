@@ -52,7 +52,7 @@ class _LoginFormState extends State<LoginForm> {
           _onWidgetDidBuild(() {
             Scaffold.of(context).showSnackBar(
               SnackBar(
-                content: Text(authErrorToString(state.error)),
+                content: Text(authErrorToString(state.error) ?? ''),
                 backgroundColor: Colors.red,
               ),
             );
@@ -63,15 +63,25 @@ class _LoginFormState extends State<LoginForm> {
           child: Column(
             children: [
               TextFormField(
-                decoration: InputDecoration(labelText: 'username'),
+                decoration: InputDecoration(
+                    icon: Icon(Icons.account_circle),
+                    labelText: 'username'
+                ),
                 controller: _usernameController,
               ),
               TextFormField(
-                decoration: InputDecoration(labelText: 'password'),
+                decoration: InputDecoration(
+                    icon: Icon(Icons.lock),
+                    labelText: 'password'
+                ),
                 controller: _passwordController,
                 obscureText: true,
               ),
               RaisedButton(
+
+                color: Colors.lightBlue,
+                textColor: Colors.white,
+                shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(30.0)),
                 onPressed:
                 state is! LoginLoading ? _onLoginButtonPressed : null,
                 child: Text('Login'),
