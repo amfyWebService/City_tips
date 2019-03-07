@@ -5,8 +5,19 @@ import 'package:city_tips/core/model/Beacon.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:preferences/preference_service.dart';
 
-class HistoryPage extends StatelessWidget {
+class HistoryPage extends StatefulWidget {
+  //DECLARER UN TABLEAU DE BEACON A REMPLIR 
+  
+  @override
+  HistoryPageState createState() {
+    return new HistoryPageState();
+  }
+}
+
+class HistoryPageState extends State<HistoryPage> {
+  List<Beacon> beacons = [];
 
   User user = new User(
     id: '1',
@@ -15,7 +26,7 @@ class HistoryPage extends StatelessWidget {
     beacons: <Beacon>[new Beacon(id: '1',
       title: "Fontaine des girondins",
       information: 'Un jour ici un homme ...',
-      tag: 'Fact',
+      tag: 'fact',
       location: LatLng(44.845500, -0.575970),
       image:
           'https://quoifaireabordeaux.com/wp-content/uploads/2018/12/ec8036126d1342c58e809b8397f80732.jpg'),
@@ -23,7 +34,7 @@ class HistoryPage extends StatelessWidget {
       title: "La patate",
       information: 'Une patate ...',
       location: LatLng(0, 0),
-      tag: 'Fact',
+      tag: 'commercial',
       image:
           'https://quoifaireabordeaux.com/wp-content/uploads/2018/12/ec8036126d1342c58e809b8397f80732.jpg')
           
@@ -32,9 +43,10 @@ class HistoryPage extends StatelessWidget {
 
           
   );
-  
+
   Widget _buildBeaconItem(BuildContext context, int index){
-    Beacon beacon = user.beacons[index];
+
+    Beacon beacon = beacons[index];
     return ListTile(
           leading: Icon(Icons.location_on),
           title: Text(beacon.title),
@@ -44,13 +56,18 @@ class HistoryPage extends StatelessWidget {
           },
         );
   }
-  
+
   @override
   Widget build(BuildContext context) {
+    beacons =[];
+    for(var item in user.beacons){
+      if (PrefService.getBool(item.tag)==true){
+        beacons.add(item);}
+    }
     return Container(
       child: ListView.builder(
           itemBuilder: _buildBeaconItem,
-          itemCount: user.beacons.length,
+          itemCount: beacons.length,
       )          
     );
   }
