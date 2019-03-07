@@ -49,7 +49,6 @@ flutter:
   assets:
     - images/icon.png
     - images/loading.gif
-    - images/iconapp.flr
     - images/Earth.flr
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
