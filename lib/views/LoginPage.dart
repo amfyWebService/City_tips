@@ -20,8 +20,8 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   LoginBloc _loginBloc;
   AuthenticationBloc _authenticationBloc;
-
   UserRepository get _userRepository => widget.userRepository;
+  String title;
 
   @override
   void initState() {
@@ -36,17 +36,28 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Login'),
-        backgroundColor: Colors.redAccent,
-      ),
-      body: Padding(
-          padding: EdgeInsets.all(16),
-          child: LoginForm(
-            authenticationBloc: _authenticationBloc,
-            loginBloc: _loginBloc,
-          )),
+    return BlocBuilder<LoginEvent, LoginState>(
+      bloc: _loginBloc,
+      builder: (BuildContext context, LoginState state,) {
+        if(state is LoginMode){
+          title = "Login";
+        } else if(state is RegisterMode) {
+          title = "Register";
+        }
+
+        return Scaffold(
+          appBar: AppBar(
+            title: Text(title),
+            backgroundColor: Colors.redAccent,
+          ),
+          body: Padding(
+              padding: EdgeInsets.all(16),
+              child: LoginForm(
+                authenticationBloc: _authenticationBloc,
+                loginBloc: _loginBloc,
+              )),
+        );
+      },
     );
   }
 

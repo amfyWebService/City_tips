@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:city_tips/core/auth/auth.dart';
 import 'package:city_tips/core/login/login.dart';
+import 'package:city_tips/core/model/User.dart';
 import 'package:city_tips/core/repositories/UserRepository.dart';
 import 'package:meta/meta.dart';
 
@@ -13,7 +14,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   LoginBloc({@required this.userRepository, @required this.authenticationBloc})
       : assert(userRepository != null), assert(authenticationBloc != null);
 
-  LoginState get initialState => LoginInitial();
+  LoginState get initialState => LoginMode();
 
   @override
   Stream<LoginState> mapEventToState(LoginState currentState, LoginEvent event) async* {
@@ -21,23 +22,27 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       yield LoginLoading();
 
       try {
-        final user = await userRepository.authenticate(username: event.username, password: event.password);
+        User user;
+
+        if(!event.isRegister){
+          user = await userRepository.authenticate(username: event.username, password: event.password);
+        } else {
+          user = await userRepository.createUser(username: event.username, password: event.password);
+        }
 
         authenticationBloc.dispatch(LoggedIn(user: user));
-        yield LoginInitial();
+        yield LoginMode();
       } catch (error) {
-        try {
-          if (error.code == "ERROR_USER_NOT_FOUND") {
-            final user = await userRepository.createUser(username: event.username, password: event.password);
-            authenticationBloc.dispatch(LoggedIn(user: user));
-            yield LoginInitial();
-          } else {
-            throw error;
-          }
-        } catch(error) {
-          yield LoginFailure(error: error.code);
-        }
+        yield LoginFailure(error: error.code);
       }
+    }
+
+    if(event is SwitchLoginMode){
+      yield LoginMode();
+    }
+
+    if(event is SwitchRegisterMode){
+      yield RegisterMode();
     }
   }
 
