@@ -32,8 +32,10 @@ dependencies:
   meta: ^1.1.6
   equatable: ^0.1.6
   preferences: '^1.3.0'
+  flare_flutter: ^1.2.3
   flutter_beacon: ^0.2.0
   flutter_local_notifications: ^0.5.2
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -47,6 +49,8 @@ flutter:
   assets:
     - images/icon.png
     - images/loading.gif
+    - images/iconapp.flr
+    - images/Earth.flr
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.

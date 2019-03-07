@@ -1,7 +1,7 @@
 import 'package:city_tips/core/auth/auth.dart';
 import 'package:city_tips/core/login/login.dart';
+import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/material.dart';
-
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class LoginForm extends StatefulWidget {
@@ -62,7 +62,14 @@ class _LoginFormState extends State<LoginForm> {
         return Form(
           child: Column(
             children: [
-              Image.asset('images/icon.png'),
+              Container(
+                height: 100.0,
+                width: 100.0,
+                child: FlareActor(
+                    "images/Earth.flr",
+                    animation: "Preview2",
+                ),
+              ),
               TextFormField(
                 decoration: InputDecoration(
                     icon: Icon(Icons.account_circle, color: Colors.grey,),
