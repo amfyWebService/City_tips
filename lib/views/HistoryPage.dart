@@ -25,18 +25,18 @@ class HistoryPageState extends State<HistoryPage> {
     password: 'PatateDeBeurreSalée',
     beacons: <Beacon>[new Beacon(id: '1',
       title: "Fontaine des girondins",
-      information: 'Un jour ici un homme ...',
+      information: 'Un jour ici un homme est tombé de la Fontainer des girondins',
       tag: 'fact',
       location: LatLng(44.845500, -0.575970),
       image:
           'https://quoifaireabordeaux.com/wp-content/uploads/2018/12/ec8036126d1342c58e809b8397f80732.jpg'),
           new Beacon(id: '2',
-      title: "La patate",
-      information: 'Une patate ...',
-      location: LatLng(0, 0),
+      title: "Fnac",
+      information: 'Super remise à la fnac -10% sur tous le magasin',
+      location: LatLng(44.839943, -0.573931),
       tag: 'commercial',
       image:
-          'https://quoifaireabordeaux.com/wp-content/uploads/2018/12/ec8036126d1342c58e809b8397f80732.jpg')
+          'http://www.girondemusicbox.fr/wp-content/uploads/2016/08/fnac-bordeaux-1.jpg')
           
           
           ]
