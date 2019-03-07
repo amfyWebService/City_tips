@@ -68,7 +68,7 @@ class HistoryPageState extends State<HistoryPage> {
   Widget build(BuildContext context) {
     beacons =[];
     for(var item in user.beacons){
-      if (PrefService.getBool(item.tag)){
+      if (PrefService.getBool(item.tag) == true){
         beacons.add(item);
       }
     }
