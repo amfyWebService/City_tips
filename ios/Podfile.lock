@@ -36,6 +36,10 @@ PODS:
     - GoogleUtilities/Environment (~> 5.3)
     - GoogleUtilities/UserDefaults (~> 5.3)
   - Flutter (1.0.0)
+  - flutter_beacon (0.2.0):
+    - Flutter
+  - flutter_local_notifications (0.0.1):
+    - Flutter
   - google_maps_flutter (0.0.1):
     - Flutter
     - GoogleMaps
@@ -98,6 +102,8 @@ DEPENDENCIES:
   - firebase_auth (from `.symlinks/plugins/firebase_auth/ios`)
   - firebase_core (from `.symlinks/plugins/firebase_core/ios`)
   - Flutter (from `.symlinks/flutter/ios`)
+  - flutter_beacon (from `.symlinks/plugins/flutter_beacon/ios`)
+  - flutter_local_notifications (from `.symlinks/plugins/flutter_local_notifications/ios`)
   - google_maps_flutter (from `.symlinks/plugins/google_maps_flutter/ios`)
   - google_sign_in (from `.symlinks/plugins/google_sign_in/ios`)
   - location (from `.symlinks/plugins/location/ios`)
@@ -126,6 +132,10 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/firebase_core/ios"
   Flutter:
     :path: ".symlinks/flutter/ios"
+  flutter_beacon:
+    :path: ".symlinks/plugins/flutter_beacon/ios"
+  flutter_local_notifications:
+    :path: ".symlinks/plugins/flutter_local_notifications/ios"
   google_maps_flutter:
     :path: ".symlinks/plugins/google_maps_flutter/ios"
   google_sign_in:
@@ -145,6 +155,8 @@ SPEC CHECKSUMS:
   FirebaseCore: c0c4befb82374d6aef64d800e569f47625352edc
   FirebaseInstanceID: 4522aad88f69297622062c0e9ffccdee3dd9b151
   Flutter: 58dd7d1b27887414a370fcccb9e645c08ffd7a6a
+  flutter_beacon: 5c9c4886689f8d298a1aa516973943f562d304aa
+  flutter_local_notifications: 9e4738ce2471c5af910d961a6b7eadcf57c50186
   google_maps_flutter: 924970f41ec509a201b593548db005efb2a09ee9
   google_sign_in: 27e70a98b529f0b076d4b19f231b81da28b1750b
   GoogleAppMeasurement: 008e04ecd8efedd97a693aea8634aefe220bd26e
