@@ -5,7 +5,12 @@ abstract class LoginState extends Equatable {
   LoginState([List props = const []]) : super(props);
 }
 
-class LoginInitial extends LoginState {
+class RegisterMode extends LoginState {
+  @override
+  String toString() => 'RegisterMode';
+}
+
+class LoginMode extends LoginState {
   @override
   String toString() => 'LoginInitial';
 }

@@ -21,6 +21,7 @@ class LoginForm extends StatefulWidget {
 class _LoginFormState extends State<LoginForm> {
   final _usernameController = TextEditingController();
   final _passwordController = TextEditingController();
+  bool isRegister = false;
 
   LoginBloc get _loginBloc => widget.loginBloc;
 
@@ -28,7 +29,8 @@ class _LoginFormState extends State<LoginForm> {
     if(errorCode == "ERROR_INVALID_EMAIL" ||
         errorCode == "ERROR_INVALID_CREDENTIAL" ||
         errorCode == "ERROR_WRONG_PASSWORD" ||
-        errorCode == "ERROR_EMAIL_ALREADY_IN_USE"
+        errorCode == "ERROR_EMAIL_ALREADY_IN_USE" ||
+        errorCode == "ERROR_USER_NOT_FOUND"
     ){
       return "Wrong email or password";
     }
@@ -44,10 +46,7 @@ class _LoginFormState extends State<LoginForm> {
   Widget build(BuildContext context) {
     return BlocBuilder<LoginEvent, LoginState>(
       bloc: _loginBloc,
-      builder: (
-          BuildContext context,
-          LoginState state,
-          ) {
+      builder: (BuildContext context, LoginState state,) {
         if (state is LoginFailure) {
           _onWidgetDidBuild(() {
             Scaffold.of(context).showSnackBar(
@@ -57,6 +56,12 @@ class _LoginFormState extends State<LoginForm> {
               ),
             );
           });
+        }
+
+        if(state is LoginMode){
+          isRegister = false;
+        } else if(state is RegisterMode) {
+          isRegister = true;
         }
 
         return Form(
@@ -95,17 +100,22 @@ class _LoginFormState extends State<LoginForm> {
                 obscureText: true,
               ),
               RaisedButton(
-
                 color: Colors.redAccent,
                 textColor: Colors.white,
                 shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(30.0)),
                 onPressed:
-                state is! LoginLoading ? _onLoginButtonPressed : null,
-                child: Text('Login'),
+                state is! LoginLoading ? () => _onLoginButtonPressed(isRegister) : null,
+                child: Text( isRegister ? 'Register' : 'Login' ),
+              ),
+              RaisedButton(
+                color: Colors.grey,
+                textColor: Colors.white,
+                shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(30.0)),
+                onPressed: (){_onSwitchRegisterModePressed(state);},
+                child: Text(isRegister ? 'Sign in' : 'Sign up'),
               ),
               Container(
-                child:
-                state is LoginLoading ? CircularProgressIndicator() : null,
+                child: state is LoginLoading ? CircularProgressIndicator() : null,
               ),
             ],
           ),
@@ -120,10 +130,20 @@ class _LoginFormState extends State<LoginForm> {
     });
   }
 
-  _onLoginButtonPressed() {
+  _onLoginButtonPressed(isRegister) {
     _loginBloc.dispatch(LoginButtonPressed(
       username: _usernameController.text,
       password: _passwordController.text,
+      isRegister: isRegister,
     ));
+  }
+
+  _onSwitchRegisterModePressed(LoginState state){
+    if(state is! LoginLoading) {
+      if (!isRegister)
+        _loginBloc.dispatch(SwitchRegisterMode());
+      else
+        _loginBloc.dispatch(SwitchLoginMode());
+    }
   }
 }
