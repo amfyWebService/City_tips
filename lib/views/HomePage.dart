@@ -13,15 +13,14 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   AuthenticationBloc authenticationBloc;
+  MenuItem _menuItemSelected;
+  User user;
 
   List<MenuItem> menu = [
     MenuItem(title: "History", icon: Icons.history, page: HistoryPage()),
     MenuItem(title: "Settings", icon:Icons.settings_applications, page: SettingsPage()),
     MenuItem(title: "Map", icon:Icons.map, page: MapPage()),
   ];
-
-  MenuItem _menuItemSelected;
-  User user;
 
   @override
   void initState() {
