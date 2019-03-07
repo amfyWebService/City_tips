@@ -1,4 +1,9 @@
+import 'dart:developer';
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_beacon/flutter_beacon.dart';
+
 
 class SplashPage extends StatelessWidget {
   @override
