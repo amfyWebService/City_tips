@@ -34,15 +34,21 @@ class MapSampleState extends State<MapSample> {
       location: LatLng(44.845500, -0.575970),
       image:
           'https://quoifaireabordeaux.com/wp-content/uploads/2018/12/ec8036126d1342c58e809b8397f80732.jpg'),
-          new Beacon(id: '2',
-      title: "La patate",
-      information: 'Une patate ...',
-      location: LatLng(0, 0),
-      tag: 'Fact',
+            new Beacon(id: '2',
+      title: "Fnac",
+      information: 'Super remise à la fnac -10% sur tous le magasin',
+      location: LatLng(44.839943, -0.573931),
+      tag: 'commercial',
       image:
-          'https://quoifaireabordeaux.com/wp-content/uploads/2018/12/ec8036126d1342c58e809b8397f80732.jpg')
-          
-          
+          'http://www.girondemusicbox.fr/wp-content/uploads/2016/08/fnac-bordeaux-1.jpg'),
+        new Beacon(id: '3',
+      title: "Grosse cloche",
+      information: 'La grosse cloche',
+      location: LatLng(44.839943, -0.5714309999999614),
+      tag: 'historic',
+      image:
+          'https://img.20mn.fr/yGwDQ2IfTlGsjvq5hO9WYw/310x190_grosse-cloche-bordeaux.jpg')
+      
           ]
 
           

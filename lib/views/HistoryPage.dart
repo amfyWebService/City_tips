@@ -25,7 +25,7 @@ class HistoryPageState extends State<HistoryPage> {
     password: 'PatateDeBeurreSalée',
     beacons: <Beacon>[new Beacon(id: '1',
       title: "Fontaine des girondins",
-      information: 'Un jour ici un homme est tombé de la Fontainer des girondins',
+      information: 'Un jour ici un homme est tombé de la Fontaine des girondins',
       tag: 'fact',
       location: LatLng(44.845500, -0.575970),
       image:
@@ -36,8 +36,15 @@ class HistoryPageState extends State<HistoryPage> {
       location: LatLng(44.839943, -0.573931),
       tag: 'commercial',
       image:
-          'http://www.girondemusicbox.fr/wp-content/uploads/2016/08/fnac-bordeaux-1.jpg')
-          
+          'http://www.girondemusicbox.fr/wp-content/uploads/2016/08/fnac-bordeaux-1.jpg'),
+        new Beacon(id: '3',
+      title: "Grosse cloche",
+      information: 'La grosse cloche',
+      location: LatLng(44.839943, -0.5714309999999614),
+      tag: 'historic',
+      image:
+          'https://img.20mn.fr/yGwDQ2IfTlGsjvq5hO9WYw/310x190_grosse-cloche-bordeaux.jpg')
+      
           
           ]
 
@@ -61,8 +68,9 @@ class HistoryPageState extends State<HistoryPage> {
   Widget build(BuildContext context) {
     beacons =[];
     for(var item in user.beacons){
-      if (PrefService.getBool(item.tag)==true){
-        beacons.add(item);}
+      if (PrefService.getBool(item.tag)){
+        beacons.add(item);
+      }
     }
     return Container(
       child: ListView.builder(
