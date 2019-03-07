@@ -48,11 +48,15 @@ class _BeaconPageState extends State<BeaconPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text("${beacon.title}"),
+        backgroundColor: Colors.redAccent,
       ),
       body: Container(
         child: Column(
           children: [
-            Image.network(beacon.image), 
+            FadeInImage.assetNetwork(
+                placeholder: 'images/loading.gif',
+                image: beacon.image,
+            ),
             description
           ]
         )

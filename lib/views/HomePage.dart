@@ -41,12 +41,12 @@ class _HomePageState extends State<HomePage> {
     menuDrawer.add(DrawerHeader(
       child: Column(
         children: <Widget>[
-          Text('City tips'),
-          Text(user?.username ?? '')
+          Text('City tips', style: TextStyle(color: Colors.white)),
+          Text(user?.username ?? '', style: TextStyle(color: Colors.white))
         ],
       ),
       decoration: BoxDecoration(
-        color: Colors.blue,
+        color: Colors.redAccent,
       ),
     ));
 
@@ -78,6 +78,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('${_menuItemSelected.title}'),
+        backgroundColor: Colors.redAccent,
       ),
       drawer: Drawer(
         // Add a ListView to the drawer. This ensures the user can scroll

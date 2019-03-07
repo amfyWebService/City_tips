@@ -62,24 +62,34 @@ class _LoginFormState extends State<LoginForm> {
         return Form(
           child: Column(
             children: [
+              Image.asset('images/icon.png'),
               TextFormField(
                 decoration: InputDecoration(
-                    icon: Icon(Icons.account_circle),
-                    labelText: 'username'
+                    icon: Icon(Icons.account_circle, color: Colors.grey,),
+                    labelText: 'username',
+                    labelStyle: TextStyle(color: Colors.grey),
+                    focusedBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(color: Colors.redAccent),
+                  ),
                 ),
                 controller: _usernameController,
               ),
               TextFormField(
                 decoration: InputDecoration(
-                    icon: Icon(Icons.lock),
-                    labelText: 'password'
+                    icon: Icon(Icons.lock, color: Colors.grey,),
+                    labelText: 'password',
+                    labelStyle: TextStyle(color: Colors.grey),
+                    focusedBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(color: Colors.redAccent),
+
+                  ),
                 ),
                 controller: _passwordController,
                 obscureText: true,
               ),
               RaisedButton(
 
-                color: Colors.lightBlue,
+                color: Colors.redAccent,
                 textColor: Colors.white,
                 shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(30.0)),
                 onPressed:
