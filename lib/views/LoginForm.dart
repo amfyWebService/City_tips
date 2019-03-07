@@ -99,20 +99,26 @@ class _LoginFormState extends State<LoginForm> {
                 controller: _passwordController,
                 obscureText: true,
               ),
-              RaisedButton(
-                color: Colors.redAccent,
-                textColor: Colors.white,
-                shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(30.0)),
-                onPressed:
-                state is! LoginLoading ? () => _onLoginButtonPressed(isRegister) : null,
-                child: Text( isRegister ? 'Register' : 'Login' ),
-              ),
-              RaisedButton(
-                color: Colors.grey,
-                textColor: Colors.white,
-                shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(30.0)),
-                onPressed: (){_onSwitchRegisterModePressed(state);},
-                child: Text(isRegister ? 'Sign in' : 'Sign up'),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  RaisedButton(
+                    color: Colors.redAccent,
+                    textColor: Colors.white,
+                    shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(30.0)),
+                    onPressed:
+                    state is! LoginLoading ? () => _onLoginButtonPressed(isRegister) : null,
+                    child: Text( isRegister ? 'Register' : 'Login' ),
+                  ),
+                  Padding(padding: EdgeInsets.symmetric(horizontal: 10),),
+                  RaisedButton(
+                    color: Colors.grey,
+                    textColor: Colors.white,
+                    shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(30.0)),
+                    onPressed: (){_onSwitchRegisterModePressed(state);},
+                    child: Text(isRegister ? 'Sign in' : 'Sign up'),
+                  ),
+                ],
               ),
               Container(
                 child: state is LoginLoading ? CircularProgressIndicator() : null,
